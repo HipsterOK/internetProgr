@@ -1,10 +1,11 @@
 <html>
-    <head> <title> Носков С.К. ЛР5 </title> </head>
-    <h2>Таблицы<h2>
-    <ul id="nav"> <!-- Населенные пункты-->
-        <li><a href="bd_city/index.php">Населенные пункиы</a>
-        <li><a href="bd_shop/index.php">Сети магазинов</a>
-        <li><a href="bd_tochk/index.php">Точки продаж</a>
+    <head> <title> РќРѕСЃРєРѕРІ РЎ.Рљ. Р›Р 5 </title> </head>
+    <h2>РўР°Р±Р»РёС†С‹<h2>
+    <ul id="nav"> <!-- РќР°СЃРµР»РµРЅРЅС‹Рµ РїСѓРЅРєС‚С‹-->
+        <li><a href="bd_city/index.php">РќР°СЃРµР»РµРЅРЅС‹Рµ РїСѓРЅРєРёС‹</a>
+        <li><a href="bd_shop/index.php">РЎРµС‚Рё РјР°РіР°Р·РёРЅРѕРІ</a>
+        <li><a href="bd_tochk/index.php">РўРѕС‡РєРё РїСЂРѕРґР°Р¶</a>
+        <li><a href="labs/index.php">Р›Р°Р±РѕСЂР°С‚РѕСЂРЅС‹Рµ СЂР°Р±РѕС‚С‹</a>
     </ul>
     <button onclick="window.location.href='gen_pdf.php'">pdf</button> </br>
     <br> <button onclick="window.location.href='gen_xls.php'">excel</button> </br>

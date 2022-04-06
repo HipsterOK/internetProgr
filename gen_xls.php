@@ -1,53 +1,54 @@
 <?php
-require_once('Classes/PHPExcel.php');$mysqli= new mysqli("localhost","root", "", "noskov_internet_prog");
-$mysqli->set_charset("utf8");
-if ($mysqli->connect_errno) {
-echo "Íåâîçìîæíî ïîäêëþ÷èòüñÿ ê ñåðâåðó";
-}
-//êîíåö áëîêà ñîåäèíåíèÿ ñ ÁÄ
+    require_once('php_excel/Classes/PHPExcel.php');
+    require_once('php_excel/Classes/PHPExcel/Writer/Excel2007.php');
+ $mysqli = new mysqli("localhost", "f0656534_noskov_internet_prog", "12345", "f0656534_noskov_internet_prog");
+            if ($mysqli->connect_errno) {
+                echo "ÐÐµ ÑƒÐ´Ð°Ð»Ð¾ÑÑŒ Ð¿Ð¾Ð´ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÑŒÑÑ Ðº Ð‘Ð”";
+            }
+//ÐºÐ¾Ð½ÐµÑ† Ð±Ð»Ð¾ÐºÐ° ÑÐ¾ÐµÐ´Ð¸Ð½ÐµÐ½Ð¸Ñ Ñ Ð‘Ð”
    if (!$mysqli->connect_errno) {
-        $result = $mysqli->query("SELECT                 shop.name as shop_name,
-                 shop.inn as shop_INN,
+         $result = $mysqli->query("SELECT
+                 shop.name as shop_name,
+                 shop.inn as shop_inn,
                  tochk.adress,
                  tochk.prod,
                  tochk.bal,
                  tochk.direct
                  FROM tochk
-                 LEFT JOIN city ON tochk.city=city.name
-                 LEFT JOIN shop ON tochk.id_shop=shop.name"
+                 LEFT JOIN city ON tochk.id_city=city.id
+                 LEFT JOIN shop ON tochk.id_shop=shop.id"
         );
     }
-
     
     $xls = new PHPExcel();
-    // Óñòàíàâëèâàåì èíäåêñ àêòèâíîãî ëèñòà
+    // Ð£ÑÑ‚Ð°Ð½Ð°Ð²Ð»Ð¸Ð²Ð°ÐµÐ¼ Ð¸Ð½Ð´ÐµÐºÑ Ð°ÐºÑ‚Ð¸Ð²Ð½Ð¾Ð³Ð¾ Ð»Ð¸ÑÑ‚Ð°
     $xls->setActiveSheetIndex(0);
-    // Ïîëó÷àåì àêòèâíûé ëèñò
+    // ÐŸÐ¾Ð»ÑƒÑ‡Ð°ÐµÐ¼ Ð°ÐºÑ‚Ð¸Ð²Ð½Ñ‹Ð¹ Ð»Ð¸ÑÑ‚
     $sheet = $xls->getActiveSheet();
-    // Ïîäïèñûâàåì ëèñò
-    $sheet->setTitle('Íàñåëåííûå ïóíêòû');
-    // Âñòàâëÿåì òåêñò â ÿ÷åéêó A1
-    $sheet->setCellValue("A1", 'Íàñåëåííûå ïóíêòû');
+    // ÐŸÐ¾Ð´Ð¿Ð¸ÑÑ‹Ð²Ð°ÐµÐ¼ Ð»Ð¸ÑÑ‚
+    $sheet->setTitle('ÐÐ°ÑÐµÐ»ÐµÐ½Ð½Ñ‹Ðµ Ð¿ÑƒÐ½ÐºÑ‚Ñ‹');
+    // Ð’ÑÑ‚Ð°Ð²Ð»ÑÐµÐ¼ Ñ‚ÐµÐºÑÑ‚ Ð² ÑÑ‡ÐµÐ¹ÐºÑƒ A1
+    $sheet->setCellValue("A1", 'ÐÐ°ÑÐµÐ»ÐµÐ½Ð½Ñ‹Ðµ Ð¿ÑƒÐ½ÐºÑ‚Ñ‹');
     $sheet->getStyle('A1')->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID);
     $sheet->getStyle('A1')->getFill()->getStartColor()->setRGB('EEEEEE');
-    // Îáúåäèíÿåì ÿ÷åéêè
+    // ÐžÐ±ÑŠÐµÐ´Ð¸Ð½ÑÐµÐ¼ ÑÑ‡ÐµÐ¹ÐºÐ¸
     $sheet->mergeCells('A1:J1');
-    // Âûðàâíèâàíèå òåêñòà
+    // Ð’Ñ‹Ñ€Ð°Ð²Ð½Ð¸Ð²Ð°Ð½Ð¸Ðµ Ñ‚ÐµÐºÑÑ‚Ð°
     $sheet->getStyle('A1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
 
     $c = 0;
 
-    $header = array("Íîìåð","Ìàãàçèí","ÈÍÍ","Ãîðîä","Îáúåì ïðîäàæ","Òîðãîâûé áàëàíñ","ÔÈÎ äèðåêòîðà");
+    $header = array("Ð¿/Ð¿","ÐÐ°Ð·Ð²Ð°Ð½Ð¸Ðµ ÑÐµÑ‚Ð¸","Ð˜ÐÐ","ÐÐ´Ñ€ÐµÑ Ñ‚Ð¾Ñ‡ÐºÐ¸ Ð¿Ñ€Ð¾Ð´Ð°Ð¶","ÐžÐ±ÑŠÐµÐ¼ Ð¿Ñ€Ð¾Ð´Ð°Ð¶","Ð¢Ð¾Ñ€Ð³Ð¾Ð²Ñ‹Ð¹ Ð±Ð°Ð»Ð°Ð½Ñ","Ð¤Ð˜Ðž Ð´Ð¸Ñ€ÐµÐºÑ‚Ð¾Ñ€Ð°");
     foreach ($header as $h){
         $sheet->setCellValueByColumnAndRow($c,2,$h);
-        // Ïðèìåíÿåì âûðàâíèâàíèå
+        // ÐŸÑ€Ð¸Ð¼ÐµÐ½ÑÐµÐ¼ Ð²Ñ‹Ñ€Ð°Ð²Ð½Ð¸Ð²Ð°Ð½Ð¸Ðµ
         $sheet->getColumnDimensionByColumn($c)->setAutoSize(true);
         $c++;
     }
 
     if ($result){
         $r = 3;
-        // Äëÿ êàæäîé ñòðîêè èç çàïðîñà
+        // Ð”Ð»Ñ ÐºÐ°Ð¶Ð´Ð¾Ð¹ ÑÑ‚Ñ€Ð¾ÐºÐ¸ Ð¸Ð· Ð·Ð°Ð¿Ñ€Ð¾ÑÐ°
         while ($row = $result->fetch_row()){
             $c = 0;
 
