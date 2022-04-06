@@ -1,16 +1,19 @@
 <html>
-<head> <title> Добавление нового населенного пункта </title> </head>
+<head> <title> Р”РѕР±Р°РІР»РµРЅРёРµ РЅРѕРІРѕРіРѕ РЅР°СЃРµР»РµРЅРЅРѕРіРѕ РїСѓРЅРєС‚Р° </title> </head>
 <body>
-<H2>Вводите данные</H2>
+<H2>Р’РІРѕРґРёС‚Рµ РґР°РЅРЅС‹Рµ</H2>
 <form action="save_new.php" metod="get">
-    ИД <input name="id" size="11" type="integer">
-    <br>Название <input name="name" size="50" type="varchar">
-    <br>ИНН <input name="type" size="30" type="integer">
+    РР” <input name="id" size="11" type="integer">
+    <br>РќР°Р·РІР°РЅРёРµ <input name="name" size="50" type="varchar">
+    <br>РўРёРї <input name="type" size="30" type="varchar">
+     <br>РџР»РѕС‰Р°РґСЊ <input name="square" size="11" type="integer">
+     <br>РќР°СЃРµР»РµРЅРёРµ <input name="population" size="20" type="integer">
+     <br>Р РµРіРёРѕРЅ <input name="region" size="50" type="varchar">
 <p>
-    <input name="add" type="submit" value="Добавить">
-    <input name="b2" type="reset" value="Очистить">
+    <input name="add" type="submit" value="Р”РѕР±Р°РІРёС‚СЊ">
+    <input name="b2" type="reset" value="РћС‡РёСЃС‚РёС‚СЊ">
 </p>
 </form>
-<p><a href="index.php"> Вернуться к списку населенных пунктов </a> </p>
+<p><a href="index.php"> Р’РµСЂРЅСѓС‚СЊСЃСЏ Рє СЃРїРёСЃРєСѓ РЅР°СЃРµР»РµРЅРЅС‹С… РїСѓРЅРєС‚РѕРІ </a> </p>
 </body>
 </html>

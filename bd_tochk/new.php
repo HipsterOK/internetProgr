@@ -1,20 +1,53 @@
 <html>
-<head> <title> Добавление нового магазина</title> </head>
-<body>
-<H2>Вводите данные</H2>
-<form action="save_new.php" metod="get">
-    ИД <input name="id" size="11" type="integer">
-    <br>Магазин <input name="id_shop" size="50" type="varchar">
-    <br>Город <input name="city" size="50" type="varchar">
-    <br>Объем продаж <input name="prod" size="30" type="integer">
-    <br>Торговый баланс <input name="bal" size="11" type="integer">
-    <br>ФИО директора <input name="direct" size="11" type="varchar">
-    <br>Адрес <input name="adress" size="50" type="varchar">
-<p>
-    <input name="add" type="submit" value="Добавить">
-    <input name="b2" type="reset" value="Очистить">
-</p>
-</form>
-<p><a href="index.php"> Вернуться к списку</a> </p>
-</body>
+    <head> <title> Р”РѕР±Р°РІР»РµРЅРёРµ РЅРѕРІРѕР№  </title> </head>
+    <body>
+        <H2>Р”РѕР±Р°РІР»РµРЅРёРµ РЅРѕРІРѕР№ </H2>
+        <form action="save_new.php" method="get">
+            <br>РРґ: <input name="id" size="11" type="integer">
+                        <?php
+                $mysqli = new mysqli("localhost", "f0656534_noskov_internet_prog", "12345", "f0656534_noskov_internet_prog");
+            if ($mysqli->connect_errno) {
+                echo "РќРµ СѓРґР°Р»РѕСЃСЊ РїРѕРґРєР»СЋС‡РёС‚СЊСЃСЏ Рє Р‘Р”";
+            }
+
+
+                // РџРѕР»СѓС‡РµРЅРёРµ РґР°РЅРЅС‹С… shop
+                $result = $mysqli->query("SELECT id, name FROM shop");
+                echo "<br>Shop <select name='id_shop'>";
+
+                if ($result){
+                    while ($row = $result->fetch_array()){
+                        $id = $row['id'];
+                        $name = $row['name'];
+
+                        echo "<option value='$id'>$name</option>";
+                    }
+                }
+                echo "</select>";
+
+                // РџРѕР»СѓС‡РµРЅРёРµ РґР°РЅРЅС‹С… Рѕ city
+                $result = $mysqli->query("SELECT id, name FROM city");
+                echo "<br>City <select name='id_city'>";
+
+                if ($result){
+                    while ($row = $result->fetch_array()){
+                        $id = $row['id'];
+                        $name = $row['name'];
+
+                        echo "<option value='$id'>$name</option>";
+                    }
+                }
+                echo "</select>";
+            ?>
+            <br>РћР±СЉРµРј РїСЂРѕРґР°Р¶: <input name="prod" size="11" type="integer">
+            <br>РўРѕСЂРіРѕРІС‹Р№ Р±Р°Р»Р°РЅСЃ <input name="bal" size="11" type="integer">
+            <br>Р¤РРћ Р”РёСЂРµРєС‚РѕСЂР° <input name="direct" size="50" type="varchar">
+            <br>РђРґСЂРµСЃ: <input name="adress" size="50" type="varchar">
+            <p>
+                <input name="add" type="submit" value="Р”РѕР±Р°РІРёС‚СЊ">
+                <input name="b2" type="reset" value="РћС‡РёСЃС‚РёС‚СЊ">
+            </p>
+        </form>
+        <p><button style='color: blue' onclick="window.location.href='index.php'">Р’РµСЂРЅСѓС‚СЊСЃСЏ Рє СЃРїРёСЃРєСѓ </button></td></p>
+    </body>
 </html>

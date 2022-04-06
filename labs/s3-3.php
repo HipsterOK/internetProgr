@@ -1,16 +1,16 @@
 <HTML>
 <BODY>
 <FORM method="post"action="<?php print $PHP_SELF ?>">
-Вывод разлиных чисел из диапозона. Укажите конец диапазлона:
+Р’С‹РІРѕРґ СЂР°Р·Р»РёРЅС‹С… С‡РёСЃРµР» РёР· РґРёР°РїРѕР·РѕРЅР°. РЈРєР°Р¶РёС‚Рµ РєРѕРЅРµС† РґРёР°РїР°Р·Р»РѕРЅР°:
 	<br><INPUT type="int" name="n">
-		<br>Вывести:
+		<br>Р’С‹РІРµСЃС‚Рё:
 		<br><SELECT NAME="z" SIZE "1">
-	<OPTION VALUE="1" SELECTED> Четные
-	<OPTION VALUE="2"> Нечетные
-	<OPTION VALUE="3"> Простые
-	<OPTION VALUE="4"> Составные
+	<OPTION VALUE="1" SELECTED> Р§РµС‚РЅС‹Рµ
+	<OPTION VALUE="2"> РќРµС‡РµС‚РЅС‹Рµ
+	<OPTION VALUE="3"> РџСЂРѕСЃС‚С‹Рµ
+	<OPTION VALUE="4"> РЎРѕСЃС‚Р°РІРЅС‹Рµ
 </SELECT>
-	<p> <INPUT type="submit" name="obr" value="Вывод">
+	<p> <INPUT type="submit" name="obr" value="Р’С‹РІРѕРґ">
 </FORM>
 <?php
 $a=1;

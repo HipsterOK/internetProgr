@@ -1,7 +1,7 @@
 <?php
 $a=-1; $b = ""; 
-if ($a) { echo '$a='."$a - истина<br>"; }
- else { echo '$a='."$a - ложь<br>"; } 
-if ($b) { echo '$b='."$b - истина<br>"; }
- else { echo '$b='."$b - ложь<br>"; }
+if ($a) { echo '$a='."$a - РёСЃС‚РёРЅР°<br>"; }
+ else { echo '$a='."$a - Р»РѕР¶СЊ<br>"; } 
+if ($b) { echo '$b='."$b - РёСЃС‚РёРЅР°<br>"; }
+ else { echo '$b='."$b - Р»РѕР¶СЊ<br>"; }
 ?>

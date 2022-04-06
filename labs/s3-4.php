@@ -1,13 +1,13 @@
 <HTML>
 <BODY>
 <FORM method="post"action="<?php print $PHP_SELF ?>">
-Введите логин:
+Р’РІРµРґРёС‚Рµ Р»РѕРіРёРЅ:
 	<INPUT type="text" name="userName" maxlenght="40">
-	<INPUT type="submit" name="obr" value="Проверить">
+	<INPUT type="submit" name="obr" value="РџСЂРѕРІРµСЂРёС‚СЊ">
 </FORM>
 
 <?php
-$a=array("noskov","носков","админ","admin");
+$a=array("noskov","РЅРѕСЃРєРѕРІ","Р°РґРјРёРЅ","admin");
 
 $passed=false;
 if(isset($_POST["obr"])){
@@ -15,14 +15,14 @@ if(isset($_POST["obr"])){
 
 	for($c=0; $c< count($a); $c++){
 		if($user_name==$a[$c]){
-			echo "Добро пожаловать,$a[$c]!";
+			echo "Р”РѕР±СЂРѕ РїРѕР¶Р°Р»РѕРІР°С‚СЊ,$a[$c]!";
 			$passed =true;
 			break;
 		}
 	}
 
 	if(!$passed){
-		echo "Вы не зарегистрированный пользователь!";
+		echo "Р’С‹ РЅРµ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅРЅС‹Р№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ!";
 	}
 }
 ?>

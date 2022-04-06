@@ -1,5 +1,5 @@
 <HTML>
-<TITLE> Задача1-2 </TITLE>
+<TITLE> Р—Р°РґР°С‡Р°1-2 </TITLE>
 <BODY>
 <TABLE border=2>
 <?php

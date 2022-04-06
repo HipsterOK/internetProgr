@@ -1,18 +1,18 @@
 <HTML>
-<HEAD><TITLE>  јЋ№ ”Ћя“ќ– </TITLE></HEAD>
+<HEAD><TITLE> ??????????? </TITLE></HEAD>
 <BODY>
 <FORM method="post"action="<?php print $PHP_SELF ?>">
- јЋ№ ”Ћя“ќ–
+???????????
 <br><INPUT type="int" name="a">
 <br><INPUT type="int" name="b">
-<br>действие:
+<br>????????:
 <br><SELECT NAME="z" SIZE "1">
-<OPTION VALUE="1" SELECTED> сложить
-<OPTION VALUE="2"> вычесть
-<OPTION VALUE="3"> умножить
-<OPTION VALUE="4"> разделить
+<OPTION VALUE="1" SELECTED> ???????
+<OPTION VALUE="2"> ???????
+<OPTION VALUE="3"> ????????
+<OPTION VALUE="4"> ?????????
 </SELECT>
-<p> <INPUT type="submit" name="obr" value="¬перед!">
+<p> <INPUT type="submit" name="obr" value="??????!">
 </FORM>
 <?
 if (isset ($_POST["obr"])){

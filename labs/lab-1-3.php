@@ -2,7 +2,7 @@
  $num_e=2.71828;
  settype($num_e, boolean);
 ?>
- <p> Число е равно
+ <p> Р§РёСЃР»Рѕ Рµ СЂР°РІРЅРѕ
 <?
  print ($num_e . '-' . gettype ($num_e));
 ?>

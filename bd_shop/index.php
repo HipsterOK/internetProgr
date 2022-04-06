@@ -1,42 +1,36 @@
-<META content="text/html; charset=utf8" http-equiv=Content-type>
 <html>
-    <head> <title> Сведения о магазинах</title> </head>
+    <head> <title> РЎРІРµРґРµРЅРёСЏ Рѕ СЃРµС‚Рё РјР°РіР°Р·РёРЅРѕРІ </title> </head>
 
-    <h2>Список точек:</h2>
+    <h2>РЎРїРёСЃРѕРє РјР°РіР°Р·РёРЅРѕРІ:</h2>
     <table border="1">
         <tr>
-            <th> ИД </th><th> Название </th> <th> ИНН </th> <th> Редактировать </th> <th> Уничтожить </th>
-
-
+        <th> РР” </th><th> РќР°Р·РІР°РЅРёРµ </th> <th> РРќРќ </th>
         </tr>
         <?php
+            $mysqli = new mysqli("localhost", "f0656534_noskov_internet_prog", "12345", "f0656534_noskov_internet_prog");
+            if ($mysqli->connect_errno) {
+                echo "РќРµ СѓРґР°Р»РѕСЃСЊ РїРѕРґРєР»СЋС‡РёС‚СЊСЃСЏ Рє Р‘Р”";
+            }
 
-            mysql_connect("localhost", "root", "", "noskov_internet_prog") or die ("Невозможно 
-подключиться к серверу");
-mysql_query("SET NAMES cp1251");
-mysql_select_db("noskov_internet_prog") or die("Нет такой таблицы!");
-            // Запрос на выборку сведений о пользователях
-            $result = mysql_query("SELECT id, name, inn FROM shop");
-
+            // Р—Р°РїСЂРѕСЃ РЅР° РІС‹Р±РѕСЂРєСѓ СЃРІРµРґРµРЅРёР№ 
+            $result = $mysqli->query("SELECT id, name, inn FROM shop");
             $counter=0;
             if ($result){
-                while ($row = mysql_fetch_array($result)){
+                while ($row = $result->fetch_array()){
                     $id = $row['id'];
                     $name = $row['name'];
                     $inn = $row['inn'];
                     $counter++;
-
                     echo "<tr>";
-                    echo "<td>$id</td><td>$name</td><td>$inn</td";
-echo "<tr>";
-                    echo "<td><button style='color:  black' onclick=\"window.location.href='edit.php?id=$id'\">Редактировать</button></td>";
-                    echo "<td><button style='color:  black' onclick=\"window.location.href='delete.php?id=$id'\">Удалить</button></td>";
+                    echo "<td>$id</td><td>$name</td><td>$inn</td>";
+                    echo "<td><button style='color:  black' onclick=\"window.location.href='edit.php?id=$id'\">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</button></td>";
+                    echo "<td><button style='color:  black' onclick=\"window.location.href='delete.php?id=$id'\">РЈРґР°Р»РёС‚СЊ</button></td>";
                     echo "</tr>";
                 }
             }
             print "</table>";
-            print("<p>Всего: $counter </p>");
+            print("<p>Р’СЃРµРіРѕ СЃРµС‚РµР№ РјР°РіР°Р·РёРЅРѕРІ: $counter </p>");
         ?>
-    <button style='color: black' onclick="window.location.href='new.php'">Добавить сеть</button></td>
-    <button style='color: black' onclick="window.location.href='../index.php'">Вернуться в меню</button></td>
+    <button style='color: black' onclick="window.location.href='new.php'">Р”РѕР±Р°РІРёС‚СЊ РјР°РіР°Р·РёРЅ</button></td>
+    <button style='color: black' onclick="window.location.href='../index.php'">Р’РµСЂРЅСѓС‚СЊСЃСЏ РІ РјРµРЅСЋ</button></td>
 </html>

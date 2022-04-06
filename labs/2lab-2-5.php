@@ -1,7 +1,7 @@
 <HTML>
-<TITLE> Носков С.К. </TITLE>
+<TITLE> РќРѕСЃРєРѕРІ РЎ.Рљ. </TITLE>
 <?
-echo '6 вариант <br>';
+echo '6 РІР°СЂРёР°РЅС‚ <br>';
 $a=rand (-10,10);
 $b=rand (-10,10);
 $z=f($a,pow($b,8)-pow($a,7))+f(pow($a,10)-pow($b,8), $b);
@@ -15,10 +15,10 @@ return $u - 2 * $t;
 elseif ($u<0 and $t<0)
 return $t + 3 * $u / $u * $t;
 }
-echo 'Ответ: <br>'.$z;
+echo 'РћС‚РІРµС‚: <br>'.$z;
 echo '<br>';
 
-echo '12 вариант <br>';
+echo '12 РІР°СЂРёР°РЅС‚ <br>';
 $a1=rand (-10,10);
 $b1=rand (-10,10);
 settype ($z1, float);
@@ -31,6 +31,6 @@ return 2*$u1*$t1;
 elseif ($u1>$t1)
 return cos($u1) * cos($u1)+((pow($t1,2))/5);
 }
-echo "Ответ: ". $z1;
+echo "РћС‚РІРµС‚: ". $z1;
 ?>
 </HTML>

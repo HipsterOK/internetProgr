@@ -1,13 +1,13 @@
 <?php
 $dn=rand(1,7); 
-print ($dn ." - номер дня недели <br>");
+print ($dn ." - РЅРѕРјРµСЂ РґРЅСЏ РЅРµРґРµР»Рё <br>");
 switch ($dn) {
-case 1: print ("это понедельник"); break;
-case 2: print ("это вторник"); break;
-case 3: print ("это среда"); break;
-case 4: print ("это четверг"); break;
-case 5: print ("это пятница"); break;
-case 6: print ("это суббота"); break;
-case 7: print ("это воскресенье");
+case 1: print ("СЌС‚Рѕ РїРѕРЅРµРґРµР»СЊРЅРёРє"); break;
+case 2: print ("СЌС‚Рѕ РІС‚РѕСЂРЅРёРє"); break;
+case 3: print ("СЌС‚Рѕ СЃСЂРµРґР°"); break;
+case 4: print ("СЌС‚Рѕ С‡РµС‚РІРµСЂРі"); break;
+case 5: print ("СЌС‚Рѕ РїСЏС‚РЅРёС†Р°"); break;
+case 6: print ("СЌС‚Рѕ СЃСѓР±Р±РѕС‚Р°"); break;
+case 7: print ("СЌС‚Рѕ РІРѕСЃРєСЂРµСЃРµРЅСЊРµ");
 }
 ?>

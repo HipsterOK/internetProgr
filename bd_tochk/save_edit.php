@@ -1,23 +1,29 @@
-<html> <body>
+<html>
+<body>
 <?php
-  mysql_connect("localhost","root","","noskov_internet_prog") or die ("Невозможно 
-подключиться к серверу");
- mysql_query('SET NAMES cp1251'); // Тип кодировки
- mysql_select_db("noskov_internet_prog") or die("Нет такой таблицы!");
+ $mysqli = new mysqli("localhost", "f0656534_noskov_internet_prog", "12345", "f0656534_noskov_internet_prog");
+            if ($mysqli->connect_errno) {
+                echo "РќРµ СѓРґР°Р»РѕСЃСЊ РїРѕРґРєР»СЋС‡РёС‚СЊСЃСЏ Рє Р‘Р”";
+            }
 
- $zapros="UPDATE tochk SET id='" . $_GET['id']
-."', id_shop='".$_GET['id_shop']."', city='"
-.$_GET['city']."', prod='".$_GET['prod'].
-"', bal='".$_GET['bal'].
-"', direct='".$_GET['direct'].
-"', adress='".$_GET['adress']. "' WHERE id="
-.$_GET['id'];
- mysql_query($zapros);
-
-if (mysql_affected_rows()>0) {
- echo 'Все сохранено. <a href="index.php"> Вернуться к списку 
-</a>'; }
- else { echo 'Ошибка сохранения. <a href="index.php"> 
-Вернуться к списку</a> '; }
+$id = $_GET['id'];
+$id_shop = $_GET['id_shop'];
+$id_city = $_GET['id_city'];
+$prod = $_GET['prod'];
+$bal = $_GET['bal'];
+$direct = $_GET['direct'];
+$adress = $_GET['adress'];
+$request ="UPDATE tochk SET id_shop='$id_shop',id_city='$id_city', 
+prod='$prod', bal='$bal', 
+direct='$direct', adress='$adress'
+WHERE id='$id'";
+$result = $mysqli->query($request);
+if ($result) {
+echo 'Р’СЃРµ СЃРѕС…СЂР°РЅРµРЅРѕ. <a href="index.php"> Р’РµСЂРЅСѓС‚СЊСЃСЏ Рє СЃРїРёСЃРєСѓ  </a>';
+}
+else {
+echo 'РћС€РёР±РєР° СЃРѕС…СЂР°РЅРµРЅРёСЏ. <a href="index.php"> Р’РµСЂРЅСѓС‚СЊСЃСЏ Рє СЃРїРёСЃРєСѓ</a> ';
+}
 ?>
-</body> </html>
+</body>
+</html>

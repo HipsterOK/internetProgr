@@ -1,22 +1,26 @@
 <html> <body>
 <?php
-  mysql_connect("localhost","root","","noskov_internet_prog") or die ("Невозможно 
-подключиться к серверу");
- mysql_query('SET NAMES cp1251'); // Тип кодировки
- mysql_select_db("noskov_internet_prog") or die("Нет такой таблицы!");
+ $mysqli = new mysqli("localhost", "f0656534_noskov_internet_prog", "12345", "f0656534_noskov_internet_prog");
+            if ($mysqli->connect_errno) {
+                echo "Не удалось подключиться к БД";
+            }
+            // Запрос на выборку сведений о пользователях
+             $result = $mysqli->query("SELECT id, name, type, square, population, region FROM city");
 
- $zapros="UPDATE city SET id='" . $_GET['id']
-."', name='".$_GET['name']."', type='"
-.$_GET['type']."', square='".$_GET['square'].
-"', population='".$_GET['population'].
-"', region='".$_GET['region']. "' WHERE id="
-.$_GET['id'];
- mysql_query($zapros);
+    $id = $_GET['id'];
 
-if (mysql_affected_rows()>0) {
- echo 'Все сохранено. <a href="index.php"> Вернуться к списку 
-</a>'; }
- else { echo 'Ошибка сохранения. <a href="index.php"> 
-Вернуться к списку</a> '; }
+    $name = $_GET['name'];
+    $type = $_GET['type'];
+    $square = $_GET['square'];
+    $population = $_GET['population'];
+    $region = $_GET['region'];
+
+    $result = $mysqli->query("UPDATE city1
+        SET name='$name', type='$type', square='$square',
+        population='$population', region='$region' WHERE id='$id'"
+    );
+
+    header("Location: city.php");
+    exit;
 ?>
 </body> </html>

@@ -1,30 +1,29 @@
-<html>
-    <head> <title> Редактирование данных населенного пункта </title> </head>
+<<html>
+    <head> <title> Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РґР°РЅРЅС‹С…  </title> </head>
     <body>
         <form action='save_edit.php' method='get'>
             <?php
-
-            mysql_connect("localhost", "root", "", "noskov_internet_prog") or die ("Невозможно 
-подключиться к серверу");
-mysql_query("SET NAMES cp1251");
-mysql_select_db("noskov_internet_prog") or die("Нет такой таблицы!");
+               $mysqli = new mysqli("localhost", "f0656534_noskov_internet_prog", "12345", "f0656534_noskov_internet_prog");
+            if ($mysqli->connect_errno) {
+                echo "РќРµ СѓРґР°Р»РѕСЃСЊ РїРѕРґРєР»СЋС‡РёС‚СЊСЃСЏ Рє Р‘Р”";
+            }
 
 
                 $id = $_GET['id'];
 
-                $result = mysql_query("SELECT id, name, inn, FROM shop WHERE id='$id'");
+                $result = $mysqli->query("SELECT id, name, inn FROM sho[ WHERE id='$id'");
 
                 if ($result && $st = $result->fetch_array()){
                     $name = $st['name'];
-                    $inn = $st['inn'];
-                      }
+                    $INN = $st['inn'];
+                }
 
-                print "Название <input name='name' size='50' type='varchar' value='$name'>";
-                print "<br>ИНН <input name='inn' size='30' type='integer' value='$inn'>";
+                print "РќР°Р·РІР°РЅРёРµ <input name='name' size='50' type='varchar' value='$name'>";
+                print "<br>РРќРќ <input name='inn' size='50' type='integer' value='$inn'>";
                 print "<input type='hidden' name='id' size='30' value='$id'>";
             ?>
-            <p><input type='submit' name='save' value='Сохранить'></p>
+            <p><input type='submit' name='save' value='РЎРѕС…СЂР°РЅРёС‚СЊ'></p>
         </form>
-        <p><button style='color: blue' onclick="window.location.href='index.php'">Вернуться к списку </button></td></p>
+        <p><button style='color: blue' onclick="window.location.href='index.php'">Р’РµСЂРЅСѓС‚СЊСЃСЏ Рє СЃРїРёСЃРєСѓ </button></td></p>
     </body>
 </html>

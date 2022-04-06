@@ -1,11 +1,11 @@
 <?php
-  mysql_connect("localhost","root","","noskov_internet_prog") or die ("Невозможно 
-подключиться к серверу");
- mysql_query('SET NAMES cp1251'); // Тип кодировки
- mysql_select_db("noskov_internet_prog") or die("Нет такой таблицы!");
-
- $zapros="DELETE FROM tochk WHERE id=" . $_GET['id'];
-mysql_query($zapros);
-header("Location: index.php");
- exit;
+  $mysqli = new mysqli("localhost", "f0656534_noskov_internet_prog", "12345", "f0656534_noskov_internet_prog");
+            if ($mysqli->connect_errno) {
+                echo "РќРµ СѓРґР°Р»РѕСЃСЊ РїРѕРґРєР»СЋС‡РёС‚СЊСЃСЏ Рє Р‘Р”";
+            }
+    $id = $_GET['id'];
+    // РЈРґР°Р»РµРЅРёРµ 
+    $result = $mysqli->query("DELETE FROM tochk WHERE id='$id'");
+    header("Location: index.php");
+    exit;
 ?>

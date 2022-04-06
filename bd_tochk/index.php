@@ -1,46 +1,53 @@
-<META content="text/html; charset=utf8" http-equiv=Content-type>
 <html>
-    <head> <title> Сведения о точках продаж</title> </head>
-
-    <h2>Список точек:</h2>
+    <head> <title> РЎРІРµРґРµРЅРёСЏ Рѕ С‚РѕС‡РєР°С… РїСЂРѕРґР°Р¶ </title> </head>
+    <h2> РЎРїРёСЃРѕРє С‚РѕС‡РµРє РїСЂРѕРґР°Р¶  </h2>
     <table border="1">
         <tr>
-            <th> ИД </th><th> Магазин </th> <th> Город </th>
-            <th> Объем продаж </th> <th> Торговый баланс </th> <th> ФИО директора</th> <th> Адрес</th> 
-
+            <th> РРґ </th> <th> РќР°Р·РІР°РЅРёРµ СЃРµС‚Рё РјР°РіР°Р·РёРЅР° </th> <th> Р“РѕСЂРѕРґ </th>
+            <th> РћР±СЉРµРј РїСЂРѕРґР°Р¶ </th> <th> РўРѕСЂРіРѕРІС‹Р№ Р±Р°Р»Р°РЅСЃ </th> 
+            <th> Р¤РРћ Р”РёСЂРµРєС‚РѕСЂР° </th> <th> РђРґСЂРµСЃ </th>
         </tr>
         <?php
+           $mysqli = new mysqli("localhost", "f0656534_noskov_internet_prog", "12345", "f0656534_noskov_internet_prog");
+            if ($mysqli->connect_errno) {
+                echo "РќРµ СѓРґР°Р»РѕСЃСЊ РїРѕРґРєР»СЋС‡РёС‚СЊСЃСЏ Рє Р‘Р”";
+            }
+            // Р—Р°РїСЂРѕСЃ РЅР° РІС‹Р±РѕСЂРєСѓ СЃРІРµРґРµРЅРёР№ Рѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏС…
+        
+            // Р—Р°РїСЂРѕСЃ РЅР° РІС‹Р±РѕСЂРєСѓ СЃРІРµРґРµРЅРёР№ 
+ // Р—Р°РїСЂРѕСЃ РЅР° РІС‹Р±РѕСЂРєСѓ СЃРІРµРґРµРЅРёР№ 
+            $result = $mysqli->query("SELECT tochk.id,  
+            shop.name as shop,  city.name as city, 
+            tochk.prod, tochk.bal,
+            tochk.direct, tochk.adress FROM tochk
+            LEFT JOIN shop ON tochk.id_shop = shop.id
+            LEFT JOIN city ON tochk.id_city = city.id" );
 
-            mysql_connect("localhost", "root", "", "noskov_internet_prog") or die ("Невозможно 
-подключиться к серверу");
-mysql_query("SET NAMES cp1251");
-mysql_select_db("noskov_internet_prog") or die("Нет такой таблицы!");
-            // Запрос на выборку сведений о пользователях
-            $result = mysql_query("SELECT id, id_shop, city, prod, bal, direct, adress FROM tochk");
 
             $counter=0;
             if ($result){
-                while ($row = mysql_fetch_array($result)){
+                while ($row = $result->fetch_array()) {
                     $id = $row['id'];
-                    $id_shop = $row['id_shop'];
+                    $shop = $row['shop'];
                     $city = $row['city'];
                     $prod = $row['prod'];
                     $bal = $row['bal'];
                     $direct = $row['direct'];
-				$adress = $row['adress'];
-
-                    $counter++;
+                    $adress = $row['adress'];
 
                     echo "<tr>";
-                    echo "<td>$id</td><td>$id_shop</td><td>$city</td><td>$prod</td><td>$bal</td><td>$direct</td><td>$adress</td>";
-                    echo "<td><button style='color:  black' onclick=\"window.location.href='edit.php?id=$id'\">Редактировать</button></td>";
-                    echo "<td><button style='color:  black' onclick=\"window.location.href='delete.php?id=$id'\">Удалить</button></td>";
+                    echo "<td>$id</td><td>$shop</td><td>$city</td><td>$prod</td><td>$bal</td>
+                    <td>$direct</td><td>$adress</td>";
+                    echo "<td><button style='color: black' onclick=\"window.location.href='edit.php?id=$id'\">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</button></td>";
+                    echo "<td><button style='color: black' onclick=\"window.location.href='delete.php?id=$id'\">РЈРґР°Р»РёС‚СЊ</button></td>";
                     echo "</tr>";
+
+                    $counter++;
                 }
             }
             print "</table>";
-            print("<p>Всего: $counter </p>");
+            print("<p>Р’СЃРµРіРѕ:  $counter </p>");
         ?>
-    <button style='color: black' onclick="window.location.href='new.php'">Добавить точку</button></td>
-    <button style='color: black' onclick="window.location.href='../index.php'">Вернуться в меню</button></td>
+    <button style='color: blue' onclick="window.location.href='new.php'">Р”РѕР±Р°РІРёС‚СЊ </button></td>
+    <button style='color: blue' onclick="window.location.href='../index.php'">Р’РµСЂРЅСѓС‚СЊСЃСЏ РІ РјРµРЅСЋ</button></td>
 </html>

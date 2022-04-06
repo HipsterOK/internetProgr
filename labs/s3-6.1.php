@@ -1,10 +1,10 @@
 <HTML>
 <BODY>
-<H1> Вариант 3 </H1>
+<H1> Р’Р°СЂРёР°РЅС‚ 3 </H1>
 <FORM action="<?php print $PHP_SELF ?>" method="post">
-<p>Предложение: <INPUT type="text" name="sentence" maxlenght="40"></p>
-<p>Буква: <INPUT type="text" name="letter" maxlenght="40"></p>
-<p><INPUT type="submit" name="count" value="Посчитать"></p>
+<p>РџСЂРµРґР»РѕР¶РµРЅРёРµ: <INPUT type="text" name="sentence" maxlenght="40"></p>
+<p>Р‘СѓРєРІР°: <INPUT type="text" name="letter" maxlenght="40"></p>
+<p><INPUT type="submit" name="count" value="РџРѕСЃС‡РёС‚Р°С‚СЊ"></p>
 </FORM>
 <?php
 if(isset($_POST["count"])){
@@ -12,7 +12,7 @@ $sentence=trim($_POST["sentence"]);
 $letter=trim($_POST["letter"]);
 
 if(empty($letter) || empty($sentence)){
-echo "Заполните поля";
+echo "Р—Р°РїРѕР»РЅРёС‚Рµ РїРѕР»СЏ";
 return;
 }
 $words=mb_split(" ",$sentence);
@@ -22,7 +22,7 @@ if(mb_stripos($words[$c], $letter)===0){
 $counter++;
 }
 }
-echo "Количество слов на эту букву: $counter";
+echo "РљРѕР»РёС‡РµСЃС‚РІРѕ СЃР»РѕРІ РЅР° СЌС‚Сѓ Р±СѓРєРІСѓ: $counter";
 }
 ?>
 </BODY>
