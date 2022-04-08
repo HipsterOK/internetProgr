@@ -11,7 +11,7 @@
 
                 $id = $_GET['id'];
 
-                $result = $mysqli->query("SELECT id, name, inn FROM sho[ WHERE id='$id'");
+                $result = $mysqli->query("SELECT id, name, inn FROM shop WHERE id='$id'");
 
                 if ($result && $st = $result->fetch_array()){
                     $name = $st['name'];

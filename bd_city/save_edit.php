@@ -15,12 +15,12 @@
     $population = $_GET['population'];
     $region = $_GET['region'];
 
-    $result = $mysqli->query("UPDATE city1
+    $result = $mysqli->query("UPDATE city
         SET name='$name', type='$type', square='$square',
         population='$population', region='$region' WHERE id='$id'"
     );
 
-    header("Location: city.php");
+    header("Location: index.php");
     exit;
 ?>
 </body> </html>
