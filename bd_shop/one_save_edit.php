@@ -5,11 +5,8 @@
             }
 
 
-    $id = $_GET['id'];
-    $name = $_GET['name'];
-    $inn = $_GET['inn'];
+    $id = $_POST['id'];
+    $name = $_POST['name'];
+    $inn = $_POST['inn'];
     $result = $mysqli->query("UPDATE shop SET name='$name', INN='$inn' WHERE id='$id'" );
-    
-    header("Location: index.php");
-    exit;
 ?>

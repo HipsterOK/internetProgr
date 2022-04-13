@@ -1,7 +1,7 @@
 <META content="text/html; charset=utf8" http-equiv=Content-type>
 <html>
     <head> <title> Сведения о населенных пунктах </title> </head>
-  
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <h2>Список населенных пунктов:</h2>
         <style>
         .modalDialog {
@@ -58,7 +58,7 @@
 .close:hover { background: #00d9ff; }
     </style>
     
-    <table border="1">
+    <table id='table' border="1">
         <tr>
             <th> ИД </th><th> Название </th> <th> Тип </th>
             <th> Площадь </th> <th> Население </th> <th> Регион </th> 
@@ -104,7 +104,7 @@
 
         <a href="#close" title="Закрыть" class="close">X</a>
 
-            <form action='save_edit.php' method='get'>
+            <form id='form' method='post'>
             <?php
 
           $mysqli = new mysqli("localhost", "f0656534_noskov_internet_prog", "12345", "f0656534_noskov_internet_prog");
@@ -169,7 +169,27 @@
         </form>
     </div>
 </div>
-    
+ 
+ <script type="text/javascript" language="javascript">
+  $("#form").on("submit", function(e){
+  e.preventDefault();
+  var data1 = $(this).serialize();
+//   alert(data1);
+  $.ajax({
+    type: 'POST',
+    url: 'one_save_edit.php',
+    cache: false,
+    data: $(this).serialize(),
+    success: function (data) {
+          $("#table").load("index.php #table");
+        alert('Успех!');
+
+    },
+    error: function (xhr, str) {
+        alert('Возникла ошибка: ' + xhr.responseCode);
+    }
+});
+})
 </script>
     
     <button style='color: black' onclick="window.location.href='new.php'">Добавить город</button></td>

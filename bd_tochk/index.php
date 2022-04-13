@@ -1,7 +1,7 @@
 <html>
     <head> <title> Сведения о точках продаж </title> </head>
     <h2> Список точек продаж  </h2>
-    
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
      <style>
         .modalDialog {
 	position: fixed;
@@ -57,7 +57,7 @@
 .close:hover { background: #00d9ff; }
     </style>
     
-    <table border="1">
+    <table id='table' border="1">
         <tr>
             <th> Ид </th> <th> Название сети магазина </th> <th> Город </th>
             <th> Объем продаж </th> <th> Торговый баланс </th> 
@@ -110,7 +110,7 @@
 
         <a href="#close" title="Закрыть" class="close">X</a>
 
-<form action='save_edit.php' method='get'>
+<form id='form' method='post'>
 <?php 
  $mysqli = new mysqli("localhost", "f0656534_noskov_internet_prog", "12345", "f0656534_noskov_internet_prog");
             if ($mysqli->connect_errno) {
@@ -280,6 +280,28 @@ print "<p><a href='index.php'> Вернуться к списку  </a>";
 </form>
     </div>
 </div>
+        
+        <script type="text/javascript" language="javascript">
+  $("#form").on("submit", function(e){
+  e.preventDefault();
+  var data1 = $(this).serialize();
+//   alert(data1);
+  $.ajax({
+    type: 'POST',
+    url: 'one_save_edit.php',
+    cache: false,
+    data: $(this).serialize(),
+    success: function (data) {
+          $("#table").load("index.php #table");
+        alert('Успех!');
+
+    },
+    error: function (xhr, str) {
+        alert('Возникла ошибка: ' + xhr.responseCode);
+    }
+});
+})
+</script>
         
     <button style='color: blue' onclick="window.location.href='new.php'">Добавить </button></td>
     <button style='color: blue' onclick="window.location.href='../index.php'">Вернуться в меню</button></td>

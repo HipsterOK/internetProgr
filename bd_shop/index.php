@@ -1,6 +1,8 @@
 <html>
     <head> <title> Сведения о сети магазинов </title> </head>
 
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
     <h2>Список магазинов:</h2>
      <style>
         .modalDialog {
@@ -56,8 +58,7 @@
 
 .close:hover { background: #00d9ff; }
     </style>
-    
-    <table border="1">
+    <table id="table" border="1">
         <tr>
         <th> ИД </th><th> Название </th> <th> ИНН </th>
         </tr>
@@ -92,7 +93,7 @@
 
         <a href="#close" title="Закрыть" class="close">X</a>
 
-            <form action='save_edit.php' method='get'>
+           <form id='form' method='post'>
             <?php
                $mysqli = new mysqli("localhost", "f0656534_noskov_internet_prog", "12345", "f0656534_noskov_internet_prog");
             if ($mysqli->connect_errno) {
@@ -107,26 +108,53 @@
 
                 if ($result && $st = $result->fetch_array()){
                     $name = $st['name'];
-                    $INN = $st['inn'];
+                    $inn = $st['inn'];
                 }
+
  switch ($vid) {
     case name:
-           print "Название <input name='name' size='50' type='varchar' value='$name'>";
-            print "<br><input type='hidden' name='inn' size='50' type='integer' value='$inn'>";
+           print "Название <input id='nameID' name='name' size='50' type='varchar' value='$name'>";
+            print "<br><input id='innID' type='hidden' name='inn' size='50' type='integer' value='$inn'>";
         break;
     case inn:
-        print "Название <input type='hidden' name='name' size='50' type='varchar' value='$name'>";
-            print "<br>ИНН<input  name='inn' size='50' type='integer' value='$inn'>";
+        print "Название <input id='nameID'type='hidden' name='name' size='50' type='varchar' value='$name'>";
+            print "<br>ИНН<input id='innID' name='inn' size='50' type='integer' value='$inn'>";
         break;
  }
                 
-                print "<input type='hidden' name='id' size='30' value='$id1'>";
+                print "<input id='ID' type='hidden' name='id' size='30' value='$id1'>";
             ?>
-            <p><input type='submit' name='save' value='Сохранить'></p>
+
+             <p><input type='submit' id='btn' name='save' value='Сохранить'>Cохранить</button></p>
+             
         </form>
+                    
     </div>
 </div>
-        
+
+<script type="text/javascript" language="javascript">
+  $("#form").on("submit", function(e){
+  e.preventDefault();
+  var data1 = $(this).serialize();
+//   alert(data1);
+  $.ajax({
+    type: 'POST',
+    url: 'one_save_edit.php',
+    cache: false,
+    data: $(this).serialize(),
+    success: function (data) {
+          $("#table").load("index.php #table");
+        alert('Успех!');
+
+    },
+    error: function (xhr, str) {
+        alert('Возникла ошибка: ' + xhr.responseCode);
+    }
+});
+})
+</script>
+
+
     <button style='color: black' onclick="window.location.href='new.php'">Добавить магазин</button></td>
     <button style='color: black' onclick="window.location.href='../index.php'">Вернуться в меню</button></td>
 </html>
